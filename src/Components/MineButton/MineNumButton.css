@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+.minebtn {
+  padding: 2rem 4rem;
+  border-radius: 10px;
+  border: none;
+  height: 15%;
+  /* margin: 5%; */
+  background: #ff7315;
+  box-shadow: 0px 1px 7px rgba(20, 20, 20, 0.658);
+  font-family: "ubuntu", sans-serif;
+  line-height: 5%;
+  display: flex;
+}
+.minebtn:hover {
+  cursor: pointer;
+}
+
+.minebtn:active {
+  box-shadow: none;
+}
+/* .minebtn:active,
+.selected {
+  box-shadow: 0px 1px 8px #ff7315;
+} */
+
+.selected {
+  transition: box-shadow 0.3s ease-in;
+  box-shadow: 0px 1px 8px #ff7315;
+}
+
+.label {
+  /* display: block; */
+  align-self: center;
+  font-size: 1;
+  transform: scale(1.75);
+  font-weight: 500;
+  color: #f4f4f4;
+}

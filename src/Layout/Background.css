@@ -1,0 +1,60 @@
+.background {
+  height: 100vh;
+  width: 100vw;
+  background-color: #ff7315;
+  display: flex;
+  justify-content: center;
+}
+
+.mainarea {
+  background-color: #3a3535;
+  height: 95%;
+  width: 95%;
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+}
+
+.btncontainer {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 50%;
+  padding-left: 5%;
+  padding-right: 5%;
+  max-width: 100%;
+}
+
+.cashout {
+  grid-row: 2;
+  height: 25%;
+  width: 60%;
+  align-self: center;
+  border-radius: 100px;
+  border: none;
+  /* justify-self: center; */
+  margin-left: 40%;
+  background-color: #76c893;
+  box-shadow: 0px 1px 7px rgba(20, 20, 20, 0.658);
+
+  box-shadow: 0px 0px 8px #339256;
+  display: flex;
+  justify-content: center;
+  filter: brightness(50%);
+  filter: opacity(20%);
+}
+
+.cash {
+  font-family: "ubuntu";
+}
+
+/* .cashout:hover {
+  cursor: pointer;
+}
+
+.cashout:active {
+  box-shadow: none;
+} */

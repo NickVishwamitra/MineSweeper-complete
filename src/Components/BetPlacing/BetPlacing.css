@@ -1,0 +1,18 @@
+.betPlacing {
+  grid-row: 2;
+  grid-column: 3;
+  transform: scale(1.1);
+  font-family: "ubuntu", sans-serif;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.betForm {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-size: 1.5rem;
+  color: #f4f4f4;
+  align-self: flex-start;
+}
