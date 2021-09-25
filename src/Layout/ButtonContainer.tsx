@@ -1,45 +1,40 @@
 import "./Background.css";
 
 import MineNumButton from "../Components/MineButton/MineNumButton";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import React from "react";
-const ButtonContainer = (props: { selectedButton: number; handler: any }) => {
-  const [selectedBtn, setSelectedBtn] = useState(props.selectedButton);
-  //Set Selected button on click
-  const clickHandler = (btnNum: number) => {
-    switch (btnNum) {
-      case 1:
-        props.handler(1);
-        setSelectedBtn(1);
-        break;
-      case 2:
-        props.handler(2);
-        setSelectedBtn(2);
-        break;
-      case 3:
-        props.handler(3);
-        setSelectedBtn(3);
-        break;
-    }
-  };
+import { SelectedMineNumContext } from "../Contexts/GameContext";
+const ButtonContainer = () => {
+  const { selectedButton, setSelectedButton } = useContext(
+    SelectedMineNumContext
+  );
 
   return (
     // Container for choosing amount of mines
     <div className="btncontainer">
       <MineNumButton
-        className={`minebtn minebtn1 ${selectedBtn == 1 ? "selected" : null}`}
-        onClick={() => clickHandler(1)}
-        selectedButton={selectedBtn}
+        className={`minebtn minebtn1 ${
+          selectedButton == 1 ? "selected" : null
+        }`}
+        selectedBtn={selectedButton == 1}
+        btntype={selectedButton == 1 ? "primary" : "ghost"}
+        btnNum={1}
       ></MineNumButton>
       <MineNumButton
-        className={`minebtn minebtn2 ${selectedBtn == 2 ? "selected" : null}`}
-        onClick={() => clickHandler(2)}
-        selectedButton={selectedBtn}
+        className={`minebtn minebtn2 ${
+          selectedButton == 2 ? "selected" : null
+        }`}
+        selectedBtn={selectedButton == 2}
+        btntype={selectedButton == 2 ? "primary" : "ghost"}
+        btnNum={2}
       ></MineNumButton>
       <MineNumButton
-        className={`minebtn minebtn3 ${selectedBtn == 3 ? "selected" : null}`}
-        onClick={() => clickHandler(3)}
-        selectedButton={selectedBtn}
+        className={`minebtn minebtn3 ${
+          selectedButton == 3 ? "selected" : null
+        }`}
+        btntype={selectedButton == 3 ? "primary" : "ghost"}
+        selectedBtn={selectedButton == 3}
+        btnNum={3}
       ></MineNumButton>
     </div>
   );

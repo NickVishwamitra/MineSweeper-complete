@@ -1,35 +1,23 @@
 import Card from "./Card";
 import "./Background.css";
 import Minesweeper from "../Components/Minesweeper/Minesweeper";
-import MineNumButton from "../Components/MineButton/MineNumButton";
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext, Fragment } from "react";
 import ButtonContainer from "./ButtonContainer";
 import React from "react";
 import BetPlacing from "../Components/BetPlacing/BetPlacing";
-const Mainarea = () => {
-  const [selectedBtn, setSelectedBtn] = useState(1);
-  useEffect(() => {
-    // console.log(selectedBtn);
-  }, [selectedBtn]);
-  const selectHandler = (btnNum: number) => {
-    setSelectedBtn(btnNum);
-  };
-
+import Cashout from "../Components/LeftSide/Cashout";
+// import ChancePercent from "../Components/LeftSide/ChancePercent";
+import LeftSide from "../Components/LeftSide/LeftSide";
+import ChancePercent from "../Components/LeftSide/ChancePercent";
+const Mainarea = (props: any) => {
   return (
     <Card className="mainarea">
-      <Minesweeper
-        className="gameboard"
-        selectedButton={selectedBtn}
-      ></Minesweeper>
-
-      <ButtonContainer
-        selectedButton={selectedBtn}
-        handler={selectHandler}
-      ></ButtonContainer>
-      <button className="cashout">
-        <p className="label cash">Cashout</p>
-      </button>
-      <BetPlacing />
+      <Fragment>
+        <LeftSide />
+        <Minesweeper className="gameboard"></Minesweeper>
+        <ButtonContainer></ButtonContainer>
+        <BetPlacing />
+      </Fragment>
     </Card>
   );
 };

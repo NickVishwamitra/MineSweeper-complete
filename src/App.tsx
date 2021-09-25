@@ -1,10 +1,13 @@
 import "./App.css";
 import Background from "./Layout/Background";
-import React from "react";
+import React, { useState, createContext } from "react";
+import GameProvider from "./Contexts/GameContext";
 function App() {
   return (
     <div className="App">
-      <Background></Background>
+      <GameProvider props={null}>
+        <Background></Background>
+      </GameProvider>
     </div>
   );
 }
