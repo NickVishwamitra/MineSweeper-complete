@@ -18,7 +18,7 @@
   flex-direction: column;
 }
 
-.buttonContainer {
+.buttonContainerbets {
   display: flex;
   justify-content: center;
   gap: 5%;
@@ -44,14 +44,5 @@
   position: absolute;
   font-size: 1.2rem;
   transform: translateY(-115%) translateX(45%);
-}
-
-label {
-  font-size: 1.5rem;
-  color: #f4f4f4;
-  /* align-self: flex-start; */
-}
-
-input {
-  color: white !important;
+  color: white;
 }

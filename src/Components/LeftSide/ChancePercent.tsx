@@ -43,7 +43,7 @@ const ChancePercent = (props: any) => {
       setCorrectAmount(0);
       setPercent(21);
     }
-  }, [isGameOver, isGameRunning, percent, setCorrectAmount]);
+  }, [isGameOver, isGameRunning, setCorrectAmount]);
   return (
     <div>
       <Progress

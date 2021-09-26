@@ -4,7 +4,7 @@ import "./LeftSide.css";
 import WinningMoney from "./WinningMoney";
 const LeftSide = () => {
   return (
-    <div className="container">
+    <div className="leftsidecontainer">
       <ChancePercent className="progressbar" />
       <WinningMoney className="winningMoney" />
       <Cashout className="cash-out" />

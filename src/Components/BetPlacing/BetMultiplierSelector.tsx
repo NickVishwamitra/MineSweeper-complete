@@ -38,20 +38,7 @@ const BetMultiplierSelector = (props: any) => {
   };
 
   return (
-    <div className="buttonContainer">
-      {/* <ColorButton className="btn" size="small" onClick={() => handler(1)}>
-        1/4x
-      </ColorButton>
-      <ColorButton size="small" onClick={() => handler(2)}>
-        1/2x
-      </ColorButton>
-      <ColorButton size="small" onClick={() => handler(3)}>
-        3/4x
-      </ColorButton>
-      <ColorButton size="small" onClick={() => handler(4)}>
-        2x
-      </ColorButton> */}
-
+    <div className="buttonContainerbets">
       <Button
         type="primary"
         shape="round"

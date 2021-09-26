@@ -28,6 +28,7 @@ const InputField = (props: any) => {
           size="small"
           type="number"
           InputLabelProps={{
+            className: "inputfield",
             style: { color: "#fff" },
           }}
           value={props.userValue}

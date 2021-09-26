@@ -34,11 +34,11 @@ const Squares = (props: any, ref: any) => {
 
   const InitializeBoard = () => {
     setRandArr(shuffle(arr).slice(0, mineAmount));
-    updateBoard();
+    updateBoard(false);
   };
   // //////////////////////////////////////////////////////////////////
 
-  const updateBoard = () => {
+  const updateBoard = (hasClicks: boolean) => {
     const squareInitial = new Array(25);
 
     for (let index = 0; index < 25; index++) {
@@ -60,7 +60,13 @@ const Squares = (props: any, ref: any) => {
           <div
             className={`square square-${index} `}
             key={`squares-${index}`}
-            onClick={isGameRunning ? correctClickHandler : () => {}}
+            onClick={
+              hasClicks
+                ? isGameRunning
+                  ? correctClickHandler
+                  : () => {}
+                : () => {}
+            }
             style={{ backgroundColor: "#6a6262" }}
             id={String(index)}
           ></div>
@@ -91,7 +97,7 @@ const Squares = (props: any, ref: any) => {
       setIsGameOver(true);
       setMinesVisible(true);
       setIsGameRunning(false);
-      updateBoard();
+      updateBoard(true);
     }
   };
   let multiplier = 0;
@@ -113,8 +119,8 @@ const Squares = (props: any, ref: any) => {
       boolGreen[Number(event.target.id)] = true;
       setIsGreen(boolGreen);
       setCorrectAmount(correctAmount + 1);
-      updateBoard();
-      updateBoard();
+      updateBoard(true);
+      updateBoard(true);
       const bet = betAmount * multiplier;
       setBetAmount(Math.round(bet * 100) / 100);
     }
@@ -131,10 +137,9 @@ const Squares = (props: any, ref: any) => {
       // quickUpdate();
       setIsGreen(new Array(25).fill(false));
       InitializeBoard();
-      updateBoard();
     } else if (!isGameRunning) {
       setIsGreen(new Array(25).fill(false));
-      updateBoard();
+      updateBoard(true);
     }
   }, [isGameRunning]);
 
@@ -143,8 +148,8 @@ const Squares = (props: any, ref: any) => {
   }, [mineAmount]);
 
   useEffect(() => {
-    updateBoard();
-  }, [correctAmount]);
+    updateBoard(true);
+  }, [correctAmount, betAmount]);
   // useEffect(() => {
 
   useEffect(() => {
@@ -152,7 +157,7 @@ const Squares = (props: any, ref: any) => {
       setIsGreen(new Array(25).fill(false));
       setMinesVisible(true);
     }
-    updateBoard();
+    updateBoard(true);
 
     setCorrectAmount(0);
   }, [isGameOver]);
