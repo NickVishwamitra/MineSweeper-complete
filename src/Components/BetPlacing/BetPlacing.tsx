@@ -1,10 +1,7 @@
-import { useState, createContext, useContext } from "react";
+import { useState, useContext } from "react";
 import "./BetPlacing.css";
-import { TextField, Input, createTheme, MenuItem } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
 import BetMultiplierSelector from "./BetMultiplierSelector";
-import { orange } from "@material-ui/core/colors";
-import { ThemeProvider } from "@material-ui/styles";
+
 import InputField from "./InputField";
 import ConfirmButton from "./ConfirmButton";
 import Selector from "./Selector";
@@ -14,15 +11,10 @@ import {
   GameRunningContext,
 } from "../../Contexts/GameContext";
 const BetPlacing = (props: any) => {
-  const { isGameRunning, setIsGameRunning } = useContext(GameRunningContext);
+  const { isGameRunning } = useContext(GameRunningContext);
 
-  const { balance, setBalance } = useContext(BalanceAmountContext);
+  const { balance } = useContext(BalanceAmountContext);
   const [userValue, setUserValue] = useState("");
-  let betAmt = 0;
-
-  const theme = createTheme({
-    palette: { primary: orange },
-  });
 
   const handleChange = (event: any) => {
     !isGameRunning
@@ -35,10 +27,10 @@ const BetPlacing = (props: any) => {
   return (
     <div className="betPlacing">
       <Selector />
-      <p className="balance">
+      <div className="balance">
         <p>{`Balance:`}</p>
         <p>{Math.round(balance * 10000) / 10000}</p>
-      </p>
+      </div>
       <InputField onChange={handleChange} userValue={userValue}></InputField>
       <BetMultiplierSelector
         setUserValue={setUserValue}

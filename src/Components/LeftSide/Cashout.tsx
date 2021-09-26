@@ -1,6 +1,5 @@
 import { Button, message } from "antd";
 import { useContext } from "react";
-import { Collapse } from "antd";
 // import "./Minesweeper.css";
 import "./LeftSide.css";
 import {
@@ -10,12 +9,15 @@ import {
   BetAmountContext,
 } from "../../Contexts/GameContext";
 
+import useSound from "use-sound";
+import sound from "../../sounds/cashout.mp3";
+
 const Cashout = (props: any) => {
   const { isGameRunning, setIsGameRunning } = useContext(GameRunningContext);
 
-  const { isGameOver, setIsGameOver } = useContext(GameOverContext);
+  const { setIsGameOver } = useContext(GameOverContext);
   const { balance, setBalance } = useContext(BalanceAmountContext);
-  const { betAmount, setBetAmount } = useContext(BetAmountContext);
+  const { betAmount } = useContext(BetAmountContext);
   // const isDisabled = () => {
   //   if (!isGameRunning) {
   //     return true;
@@ -28,12 +30,15 @@ const Cashout = (props: any) => {
     successfulCashout();
   };
 
+  const [play] = useSound(sound);
+
   const successfulCashout = () => {
     if (isGameRunning) {
       message.success({
         className: "successBox",
         content: `Sucessful Cashout Of: ${betAmount}`,
       });
+      play();
       setIsGameRunning(false);
       setIsGameOver(false);
       const tempBalance = balance + Number(betAmount);

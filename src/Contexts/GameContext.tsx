@@ -1,4 +1,4 @@
-import React, { useState, createContext, Children, useEffect } from "react";
+import React, { useState, createContext } from "react";
 
 export const GameRunningContext = createContext({
   isGameRunning: false,

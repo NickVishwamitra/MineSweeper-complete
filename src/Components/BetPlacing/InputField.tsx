@@ -1,17 +1,8 @@
-import { useState, useContext } from "react";
 import "./BetPlacing.css";
-import {
-  TextField,
-  Button,
-  Input,
-  createTheme,
-  MenuItem,
-} from "@material-ui/core";
+import { TextField, createTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import BetMultiplierSelector from "./BetMultiplierSelector";
-import { deepOrange, orange, red } from "@material-ui/core/colors";
+import { deepOrange } from "@material-ui/core/colors";
 import { ThemeProvider } from "@material-ui/styles";
-import BetPlacing from "./BetPlacing";
 const useStyles = makeStyles({
   textBox: {
     // transform: "translateX(-50px)",

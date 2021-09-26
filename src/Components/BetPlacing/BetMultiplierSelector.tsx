@@ -1,9 +1,4 @@
-import { Container, createTheme, Theme } from "@material-ui/core";
-import { orange } from "@material-ui/core/colors";
-import { useTheme, withStyles } from "@material-ui/styles";
-import InputField from "./InputField";
 import "./BetPlacing.css";
-import { useState } from "react";
 import { Button } from "antd";
 const BetMultiplierSelector = (props: any) => {
   const [userValue, setUserValue] = [props.userValue, props.setUserValue];

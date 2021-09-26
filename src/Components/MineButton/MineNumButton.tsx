@@ -12,13 +12,11 @@ import useSound from "use-sound";
 import sound from "../../sounds/tap.mp3";
 
 const MineNumButton = (props: any) => {
-  const { selectedButton, setSelectedButton } = useContext(
-    SelectedMineNumContext
-  );
-  const { isGameRunning, setIsGameRunning } = useContext(GameRunningContext);
-  const { isGameOver, setIsGameOver } = useContext(GameOverContext);
+  const { setSelectedButton } = useContext(SelectedMineNumContext);
+  const { isGameRunning } = useContext(GameRunningContext);
+  const { setIsGameOver } = useContext(GameOverContext);
   const [play] = useSound(sound);
-  const { mineAmount, setMineAmount } = useContext(SelectedMineAmountContext);
+  const { setMineAmount } = useContext(SelectedMineAmountContext);
   //Function to check which label belongs to which button
   const checkType = (props: any) => {
     if (props.className.includes("minebtn1")) {

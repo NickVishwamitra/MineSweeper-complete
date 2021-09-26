@@ -1,22 +1,11 @@
 import "../Minesweeper.css";
-import {
-  useState,
-  useEffect,
-  Fragment,
-  useContext,
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-  createContext,
-} from "react";
-import React from "react";
+import { useState, useEffect, Fragment, useContext, useCallback } from "react";
 import {
   GameOverContext,
   GameRunningContext,
   SelectedMineAmountContext,
   SelectedMineNumContext,
   CorrectSquaresAmountContext,
-  InitializeBoardContext,
   BetAmountContext,
   MinesVisibleContext,
 } from "../../../Contexts/GameContext";
@@ -28,10 +17,8 @@ const Squares = (props: any, ref: any) => {
   const arr = Array.from(Array(25).keys());
   const [play] = useSound(sound);
 
-  const { mineAmount, setMineAmount } = useContext(SelectedMineAmountContext);
-  const { selectedButton, setSelectedButton } = useContext(
-    SelectedMineNumContext
-  );
+  const { mineAmount } = useContext(SelectedMineAmountContext);
+  const { selectedButton } = useContext(SelectedMineNumContext);
   const { isGameRunning, setIsGameRunning } = useContext(GameRunningContext);
   const { isGameOver, setIsGameOver } = useContext(GameOverContext);
   const { correctAmount, setCorrectAmount } = useContext(
@@ -41,16 +28,11 @@ const Squares = (props: any, ref: any) => {
   const { minesVisible, setMinesVisible } = useContext(MinesVisibleContext);
 
   const [square, setSquare] = useState(new Array(25));
-  const [correctSquares, setCorrectSquares] = useState(new Array(25));
-  const [squareColor, setSquareColor] = useState(new Array(25));
   const [isGreen, setIsGreen] = useState(new Array(25).fill(false));
-  const [tempCorrect, setTempCorrect] = useState("0");
   const [randArr, setRandArr] = useState(shuffle(arr).slice(0, mineAmount));
   const mineElement = <div className="mine">💣</div>;
 
   const InitializeBoard = () => {
-    const squareInitial = new Array(25);
-
     setRandArr(shuffle(arr).slice(0, mineAmount));
     updateBoard();
   };
@@ -64,11 +46,11 @@ const Squares = (props: any, ref: any) => {
         continue;
       }
 
-      if (isGreen[index] == true) {
+      if (isGreen[index] === true) {
         squareInitial[index] = (
           <div
             className={`square`}
-            style={{ backgroundColor: "green" }}
+            style={{ backgroundColor: "#ff7315" }}
             key={`squares-${index}`}
             id={String(index)}
           ></div>
@@ -88,14 +70,14 @@ const Squares = (props: any, ref: any) => {
 
     randArr.forEach((num: any) => {
       squareInitial[num] = (
-        <a
+        <div
           className={`square square-${num}`}
           key={`squares-${num} `}
           onClick={incorrectClickHandler}
           style={{ backgroundColor: "#6a6262" }}
         >
           {minesVisible ? mineElement : null}
-        </a>
+        </div>
       );
     });
     setSquare(squareInitial);
@@ -139,14 +121,14 @@ const Squares = (props: any, ref: any) => {
   };
   ////////////////////////////////////////////////////////////////////
 
-  const quickUpdate = () => {
-    const sqtest = [...square];
-    setSquare(sqtest);
-  };
+  // const quickUpdate = () => {
+  //   const sqtest = [...square];
+  //   setSquare(sqtest);
+  // };
 
   useEffect(() => {
     if (isGameRunning) {
-      quickUpdate();
+      // quickUpdate();
       setIsGreen(new Array(25).fill(false));
       InitializeBoard();
       updateBoard();
@@ -164,7 +146,6 @@ const Squares = (props: any, ref: any) => {
     updateBoard();
   }, [correctAmount]);
   // useEffect(() => {
-  useEffect(() => {}, [isGameOver]);
 
   useEffect(() => {
     if (isGameOver) {

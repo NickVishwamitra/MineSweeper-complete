@@ -1,6 +1,5 @@
 import Card from "../../Layout/Card";
 import "./Minesweeper.css";
-import { useState, useEffect, Fragment } from "react";
 import React from "react";
 import Squares from "./Components/Squares";
 

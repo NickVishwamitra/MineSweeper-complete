@@ -1,10 +1,9 @@
-import { Card, Select } from "antd";
-import { Fragment, useContext } from "react";
+import { Select } from "antd";
+import { useContext } from "react";
 import { GameRunningContext } from "../../Contexts/GameContext";
 import "./BetPlacing.css";
 const Selector = () => {
   const { Option } = Select;
-  function handleChange(value: any) {}
 
   const game = useContext(GameRunningContext);
   return (

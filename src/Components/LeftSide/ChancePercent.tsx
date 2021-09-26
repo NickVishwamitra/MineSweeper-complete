@@ -16,12 +16,10 @@ const ChancePercent = (props: any) => {
   const { correctAmount, setCorrectAmount } = useContext(
     CorrectSquaresAmountContext
   );
-  const { mineAmount, setMineAmount } = useContext(SelectedMineAmountContext);
-  const { isGameRunning, setIsGameRunning } = useContext(GameRunningContext);
-  const { isGameOver, setIsGameOver } = useContext(GameOverContext);
-  let initialPercent;
+  const { mineAmount } = useContext(SelectedMineAmountContext);
+  const { isGameRunning } = useContext(GameRunningContext);
+  const { isGameOver } = useContext(GameOverContext);
   const [percent, setPercent] = useState(21);
-  const [status, setStatus] = useState("exception");
 
   useEffect(() => {
     let currentperc = percent;
@@ -38,14 +36,14 @@ const ChancePercent = (props: any) => {
         clearInterval(interval);
       }
     }, 100);
-  }, [correctAmount, mineAmount, isGameRunning]);
+  }, [correctAmount, mineAmount, isGameRunning, percent]);
 
   useEffect(() => {
     if (!isGameRunning) {
       setCorrectAmount(0);
       setPercent(21);
     }
-  }, [isGameOver, isGameRunning]);
+  }, [isGameOver, isGameRunning, percent, setCorrectAmount]);
   return (
     <div>
       <Progress
@@ -53,7 +51,7 @@ const ChancePercent = (props: any) => {
         type="circle"
         percent={isGameRunning ? percent : 0}
         status={isGameOver && !isGameRunning ? "exception" : "active"}
-      />
+      ></Progress>
     </div>
   );
 };
